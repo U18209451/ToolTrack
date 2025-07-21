@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ToolTrack.Domain.Entities.Prestamo>
+
+@{
+    ViewData["Title"] = "Lista de Préstamos";
+}
+
+<h2 class="mb-4 fw-bold">Lista de Préstamos</h2>
+
+<a asp-action="Create" class="btn btn-success mb-3">Registrar Nuevo Préstamo</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Herramienta</th>
+            <th>Trabajador</th>
+            <th>Fecha Préstamo</th>
+            <th>Fecha Devolución</th>
+            <th>Estado</th>
+            <th>Observación</th>
+            <th class="text-center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@($"{item.Herramienta?.Nombre} ({item.Herramienta?.CodigoInterno})")</td>
+                <td>@($"{item.Trabajador?.Nombres} ({item.Trabajador?.Cargo})")</td>
+                <td>@item.FechaPrestamo.ToString("dd/MM/yyyy")</td>
+                <td>@(item.FechaDevolucion.HasValue? item.FechaDevolucion.Value.ToString("dd/MM/yyyy") : "-")</td>
+                <td>
+                    @if (item.Estado == "Activo")
+                    {
+                        <span class="badge bg-success">Activo</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">@item.Estado</span>
+                    }
+                </td>
+                <td>@item.Observacion</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdPrestamo" class="text-primary text-decoration-none">Editar</a>
+                    |
+                    <a asp-action="Details" asp-route-id="@item.IdPrestamo" class="text-info text-decoration-none">Detalles</a>
+                    |
+                    <a asp-action="Delete" asp-route-id="@item.IdPrestamo" class="text-danger text-decoration-none">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

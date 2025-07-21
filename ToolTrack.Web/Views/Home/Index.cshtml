@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<h2 class="mb-4 fw-bold text-center">Inicio</h2>
+
+<div class="d-flex flex-wrap justify-content-center gap-4">
+    <div class="card text-center p-3" style="width: 200px;">
+        <i class="fas fa-wrench fa-2x mb-2"></i>
+        <h5>Total de herramientas</h5>
+        <h3>@ViewBag.TotalHerramientas</h3>
+    </div>
+    <div class="card text-center p-3" style="width: 200px;">
+        <i class="fas fa-arrow-left fa-2x mb-2"></i>
+        <h5>Herramientas prestadas</h5>
+        <h3>@ViewBag.TotalPrestadas</h3>
+    </div>
+    <div class="card text-center p-3" style="width: 200px;">
+        <i class="fas fa-clock fa-2x mb-2"></i>
+        <h5>Herramientas disponibles</h5>
+        <h3>@ViewBag.TotalDisponibles</h3>
+    </div>
+    <div class="card text-center p-3" style="width: 200px;">
+        <i class="fas fa-exclamation-triangle fa-2x mb-2 text-warning"></i>
+        <h5>Alerta de devolución</h5>
+        <h3>@ViewBag.AlertaDevolucion</h3>
+    </div>
+</div>

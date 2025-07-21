@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Reporte General";
+}
+
+<h2 class="mb-4 fw-bold">Reporte General</h2>
+
+<div class="row g-3">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Total de Préstamos</h5>
+                <p class="card-text fs-3">@ViewBag.TotalPrestamos</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Préstamos Devueltos</h5>
+                <p class="card-text fs-3">@ViewBag.TotalDevueltos</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Préstamos Activos</h5>
+                <p class="card-text fs-3">@ViewBag.TotalActivos</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-6">
+        <div class="card border-secondary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Herramienta más prestada</h5>
+                <p class="card-text">
+                    @if (ViewBag.HerramientaMasPrestada != null)
+                    {
+                        <span class="fw-bold">@ViewBag.HerramientaMasPrestada.Herramienta</span>
+                        <span>(@ViewBag.HerramientaMasPrestada.Cantidad&nbsp;veces)</span>
+                    }
+                    else
+                    {
+                        <span>No hay datos.</span>
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card border-secondary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Trabajador con más préstamos</h5>
+                <p class="card-text">
+                    @if (ViewBag.TrabajadorTop != null)
+                    {
+                        <span class="fw-bold">@ViewBag.TrabajadorTop.Trabajador</span>
+                        <span>(@ViewBag.TrabajadorTop.Cantidad&nbsp;veces)</span>
+                    }
+                    else
+                    {
+                        <span>No hay datos.</span>
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model ToolTrack.Domain.Entities.Prestamo
+
+@{
+    ViewData["Title"] = "Registrar Préstamo";
+}
+
+<h2 class="mb-4 fw-bold">Registrar Préstamo</h2>
+
+<form asp-action="Create" class="p-4 bg-white rounded shadow-sm" style="max-width: 700px;">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+    <div class="mb-3">
+        <label asp-for="IdHerramienta" class="form-label fw-bold">Herramienta</label>
+        <select asp-for="IdHerramienta" class="form-select" asp-items="ViewBag.IdHerramienta">
+            <option value="">Seleccione una herramienta</option>
+        </select>
+        <span asp-validation-for="IdHerramienta" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="IdTrabajador" class="form-label fw-bold">Trabajador</label>
+        <select asp-for="IdTrabajador" class="form-select" asp-items="ViewBag.IdTrabajador">
+            <option value="">Seleccione un trabajador</option>
+        </select>
+        <span asp-validation-for="IdTrabajador" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Observacion" class="form-label fw-bold">Observación</label>
+        <textarea asp-for="Observacion" class="form-control" rows="3" placeholder="Ingrese una nota si es necesario..."></textarea>
+        <span asp-validation-for="Observacion" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary fw-bold w-100">Registrar Préstamo</button>
+</form>
+
+<div class="mt-3">
+    <a asp-action="Index" class="text-decoration-none">← Volver al listado</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

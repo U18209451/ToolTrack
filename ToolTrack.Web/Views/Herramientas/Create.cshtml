@@ -1,0 +1,57 @@
+﻿@model ToolTrack.Domain.Entities.Herramienta
+
+@{
+    ViewData["Title"] = "Registrar Herramienta";
+}
+
+<h2 class="mb-4 fw-bold">Registrar Herramienta</h2>
+
+<form asp-action="Create" class="p-4 bg-white rounded shadow-sm" style="max-width: 600px;">
+    <div class="mb-3">
+        <label asp-for="Nombre" class="form-label fw-bold">Nombre de la Herramienta</label>
+        <input asp-for="Nombre" class="form-control" placeholder="Ej. Taladro Bosch" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CodigoInterno" class="form-label fw-bold">Descripción</label>
+        <textarea asp-for="CodigoInterno" class="form-control" rows="3" placeholder="Ej. Taladro de impacto, 500W"></textarea>
+        <span asp-validation-for="CodigoInterno" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Estado" class="form-label fw-bold">Estado</label>
+        <select asp-for="Estado" class="form-select">
+            <option value="Disponible">Disponible</option>
+            <option value="Prestada">Prestada</option>
+            <option value="En mantenimiento">En mantenimiento</option>
+        </select>
+        <span asp-validation-for="Estado" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="IdCategoria" class="form-label fw-bold">Categoría</label>
+        <select asp-for="IdCategoria" class="form-select" asp-items="ViewBag.IdCategoria">
+            <option value="">Seleccione una categoría</option>
+        </select>
+        <span asp-validation-for="IdCategoria" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="IdUbicacion" class="form-label fw-bold">Ubicación</label>
+        <select asp-for="IdUbicacion" class="form-select" asp-items="ViewBag.IdUbicacion">
+            <option value="">Seleccione una ubicación</option>
+        </select>
+        <span asp-validation-for="IdUbicacion" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary fw-bold w-100">Registrar Herramienta</button>
+</form>
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-link">Volver al listado</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

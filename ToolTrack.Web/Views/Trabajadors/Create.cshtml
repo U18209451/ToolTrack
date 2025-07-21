@@ -1,0 +1,41 @@
+﻿@model ToolTrack.Domain.Entities.Trabajador
+
+@{
+    ViewData["Title"] = "Registrar Trabajador";
+}
+
+<h2 class="mb-4 fw-bold">Registrar Trabajador</h2>
+
+<form asp-action="Create" class="p-4 bg-white rounded shadow-sm" style="max-width: 600px;">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Nombres" class="form-label fw-bold">Nombre del Trabajador</label>
+        <input asp-for="Nombres" class="form-control" placeholder="Ej. Juan Pérez" />
+        <span asp-validation-for="Nombres" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Documento" class="form-label fw-bold">Documento (DNI)</label>
+        <input asp-for="Documento" class="form-control" placeholder="Ej. 12345678" />
+        <span asp-validation-for="Documento" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Cargo" class="form-label fw-bold">Cargo</label>
+        <select asp-for="Cargo" class="form-select" asp-items="ViewBag.Cargos">
+            <option value="">Seleccione un cargo</option>
+        </select>
+        <span asp-validation-for="Cargo" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary fw-bold w-100">Registrar Trabajador</button>
+</form>
+
+<div class="mt-3">
+    <a asp-action="Index" class="text-decoration-none">← Volver al listado</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
